@@ -2,10 +2,20 @@ name: 'Your name here'
 description: 'Provide a description here'
 author: 'Your name or organization here'
 inputs:
-  milliseconds: # change this
+  review_time_ms:
+    description: 'Required review time'
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    default: '86400000'
+  twist_url:
+    description: 'Twist integration url to post reminder messages'
+    required: true
+  message:
+    description: 'Reminder message'
+    required: true
+    default: '%reviewer%, please review [#%pr_number% - %pr_title%](%pr_url%)'
+  token:
+    description: 'GitHub token'
+    required: true
 runs:
   using: 'node16'
   main: 'dist/index.js'
